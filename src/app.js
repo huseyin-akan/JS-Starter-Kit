@@ -1,93 +1,130 @@
-//1. Aynı isimden 2 tane let tanımlaması yapamıyoruz. Ama var ile yapılabiliyor.
-//2. Const ile bir ifade tanımladığında değer vermen lazım. Sonra veremezsin. Ayrıca değiştiremezsin.
+let numbersToCheck = [];
 
-//3.
-function husola(puan =10, student){
-    console.log(student + " :" + puan);
+//Sınırsız sayıda parametre alan Asal Sayı kontrol fonksiyonu
+function calNumArrayIfPrime(...numbers){
+    let result = "";
+
+    for(let i = 0; i<numbers.length; i++){
+        if(isPrime(numbers[i])){
+            result = result + "<li>" + numbers[i] + " bir asal sayıdır </li>";
+        }else{
+            result = result + "<li>" + numbers[i] + " bir asal sayı değildir </li>";
+        }
+    }
+    return result;
 }
-husola(undefined, 'Husoka');
-//Burda ilk parametre olarak undefined gönderdik.
 
-//#REST
-//C#'taki params ifadesidir.
-function husofy(...products){
-    console.log(products);
+//Asal Sayı kontrol fonksiyonu
+function isPrime(number) {
+    for(let i = 2; i < number; i++)
+      if(number % i == 0) return false;
+    return number > 1;
 }
-//!! husofy() diye çalıştırırsak. Console'a products olarak boş array döner. --> []
 
-
-//#SPRED
-//Mesela Math.max() metoduna elindeki bir dizi sayıyı göndermek istiyorsun.
-let points = [123,42,52,6356,74,19]
-Math.max(points) // NaN döner.
-Math.max(...points) //yazarsan diziyi ayırmış olur. sonuç olarak 6356 döner.
-console.log(..."ABC","D",..."EFG", "H")  //--> A B C D E F G H yazar.
-
-//#DESTRUCTING
-//!! let keywordu kullanıldı.
-let populations = [10000,20000,30000]
-let [small, medium, high] = populations;       //small değişkenine 10000, medium'a 20000 ve high'a 30000 verdik.
-console.log(high)   //30000 yazar.
-
-let [smallx, mediumm, highl, [veryHigh, maximum]] = [10000,20000,30000, [40000, 50000]];
-
-function husolation([firstThing], number){//1. parametre array olmalı. Arrayin ilk elemanını da firstThinge verir
-    console.log(firstThing + number);            
+//Asal Sayıları Listele
+function listPrimeNumbers(count){
+    let result = '';
+    for(let i = 2; i<=count; i++){
+        if(isPrime(i)){
+            result= result + "<li>" + i + "</li>";
+        }        
+    }
+    return result;
 }
-husolation([1,2,3,4,5,6,7,8,9], 10)     //Ekrana 11 yazar.
 
-//Aşağıdaki gibi de objenin elemanlarına ulaşabilirsin.
-let student = {name: "Husoka", surname:"Akanus", age:29, city:"Istanbul"}
-console.log(student["name"]);  
-
-//Objede destructing:
-//Objenin istediğin proplarını değişkenlere atama yöntemidir.
-let {name, city} = student; //Student name ve city proplarını bu 2 değişkene atadık.
-console.log(`Öğrencinin adı:${name} ve şehri:${city}`);
-
-
-export class Customer{
-    constructor(id, customerNo){
-        this.id = id;   //aslında burada da prototyping yapılıyor.
-        this.customerNo = customerNo;
+//Arkadaş Sayı Kontrolü
+function isFriendlyNumber(number1, number2){
+    if(getSumOfDividers(number1) == getSumOfDividers(number2)){
+        return `${number1} ve ${number2} arkadaş sayılardır`
+    }else{
+        return `${number1} ve ${number2} arkadaş sayı değillerdir`
     }
 }
 
-let customer = new Customer();
-//prototyping   - Normalde Customer'ın bu propu yok.    
-customer.name = "Husokanus" //Instance'a yapılan prototyping
-Customer.surname = "Akanus" //Class'a yapılan prototyping
-
-
-class IndividualCustomer extends Customer{
-    constructor(firstName, id, customerNo){
-        super(id, customerNo)   //Customer class'ının constructor'ı
-        this.firstName = firstName;
+//Bölenleri Toplamını Bul
+function getSumOfDividers(number){
+    let result = 0;
+    for(let i = 1; i<=number; i++){
+        if(number%i == 0){
+            result += i;
+        }
     }
+    return result;
 }
 
-class CorporateCustomer extends Customer{
-    constructor(companyName, id, customerNo){
-        super(id, customerNo)   //Customer class'ının constructor'ı
-        this.companyName = companyName;
+//Mükemmel Sayıları Listele
+function listPerfectNumbers(count){
+    let result = '';
+    for(let i = 1; i<=count; i++){
+        if(isPerfectNumber(i)){
+            result= result + "<li>" + i + "</li>";
+        }        
     }
+    return result;
 }
 
-let products = [
-    {id:1, name:"Samsung", price:3200},
-    {id:2, name:"Vestel", price:1850},
-    {id:3, name:"Xiomi", price:4300},
-    {id:4, name:"Apple", price:3600},
-    {id:5, name:"Husonia", price:4200},
-]
+//Mükemmel Sayı mı kontrolü:
+function isPerfectNumber(number){
+    if(number == getSumOfDividers(number) - number){
+        return true;
+    }else return false;
+}
 
-products.map( product => console.log(product.name));    //Bir nevi for döngüsü gibi dizinin elemanlarını döndük.
-let newArray = products.map(x => x.name + "husolandi"); //Her bir ismin sonuna husolandi ekledik ve tüm elemanlari diziye
-// atadık
-console.log(newArray);
+//Butona tıklanınca hesaplamaları yapar ve asal sayı sonuçlarını ekrana yazar.
+$('#btn_calculate').click( (e)=>{
+    e.preventDefault();    
+    let result = calNumArrayIfPrime(...numbersToCheck);
+    $('#alert_result_prime').append(result);
+    
+    //hesaplama yapıldı, diziyi ve hesaplanacak sayılar ekranını temizle
+    numbersToCheck = [];
+    $('#alert_numbers_list').text('');
+})
 
-let filteredProducts = products.filter(x=>x.price>3200);  //3200'den büyük olan elemanları yeni dizide topladı.
-console.log(filteredProducts);
+//Butona tıklanınca sayıyı diziye ekler.
+$( "#btnAddNumberToList" ).click((e) => {
+    e.preventDefault();
 
-let cartTotal = products.reduce((acc, product) => acc + product.price, 0)   //cartTotal içerisine ürünlerin fiyat toplamını yazar.
-console.log(cartTotal);
+    var numberToAdd = parseInt( $("#numberToCheckForPrime").val() );  
+    numbersToCheck.push(numberToAdd);
+    $("#numberToCheckForPrime").val('');
+
+    //Eklenen sayıları ekranda göster.
+    $('#alert_numbers_list').append(`
+        <li> ${numberToAdd} </li>
+    `);
+
+    //Daha önce yapılmış hesaplamayı kaldır.
+    $('#alert_result_prime').text('');
+});
+
+//Butona tıklayınca arkadaş sayı hesaplamalarını yapar ve ekranda gösterir
+$('#btn_calc_friendly_nums').click( (e) => {
+    e.preventDefault();
+
+    var number1 = parseInt( $("#friendly_number_first").val() );
+    var number2 = parseInt( $("#friendly_number_second").val() );
+
+    let result = isFriendlyNumber(number1, number2);
+    $('#result_friendly_nums').text(result);
+});
+
+//Butona tıklayınca 1'den 1000'e kadar olan mükemmel sayıları göster:
+$('#btn_show_perfect_nums').click( (e) => {
+    e.preventDefault();
+
+    $('#mukemmel_sayilar_list').text('');
+    let result = listPerfectNumbers(1000);
+    $('#mukemmel_sayilar_list').append(result);
+    
+});
+
+//Butona tıklayınca 1'den 1000'e kadar olan mükemmel sayıları göster:
+$('#btn_show_prime_nums').click( (e) => {
+    e.preventDefault();
+
+    $('#asal_sayilar_list').text('');
+    let result = listPrimeNumbers(1000);
+    $('#asal_sayilar_list').append(result);
+    
+});
