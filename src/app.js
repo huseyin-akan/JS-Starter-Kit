@@ -128,3 +128,12 @@ $('#btn_show_prime_nums').click( (e) => {
     $('#asal_sayilar_list').append(result);
     
 });
+
+// let product2s = [
+//     {id:1 , name= "asd", unitPrice:10},
+//     {id:1 , name= "asd", unitPrice:10},
+//     {id:1 , name= "asd", unitPrice:10},
+//     {id:1 , name= "asd", unitPrice:10},
+//     {id:1 , name= "asd", unitPrice:10}
+// ]
+// product2s.map( product => console.log(product.category));
