@@ -1,8 +1,4 @@
-export class ValidationTool{
-    static yaziYaz(){
-        return "alsana bir ya<zi";
-    }
-    
+export class ValidationTool{   
     static isRequired(objectPropertyToValidate){
 
         if (!objectPropertyToValidate) {
