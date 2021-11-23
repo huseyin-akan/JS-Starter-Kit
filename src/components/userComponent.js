@@ -52,7 +52,7 @@ console.log(fakeDataService.employeeService.listEmployees());
 console.log("----------------------------------------------------")
 
 console.log("GET USER BY ID:")
-console.log(fakeDataService.employeeService.getEmployeeById(16));
+console.log(fakeDataService.customerService.getCustomerById(16));
 console.log("----------------------------------------------------")
 
 console.log("SORTING ASC")
