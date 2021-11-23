@@ -22,7 +22,7 @@ let result1 = fakeDataService.employeeService.addEmployee( {id: 16, firstName: "
 console.log(result1);
 
 //wrong id data
-let result2 = fakeDataService.employeeService.addEmployee( {id: 16, firstName: "Halit", lastName:"Altunal", city:"Mardin"
+let result2 = fakeDataService.employeeService.addEmployee( {id: "asdasdas", firstName: "Halit", lastName:"Altunal", city:"Mardin"
     ,age: 28, salary:16000, type: "employee"})
 console.log(result2);
 
@@ -46,7 +46,10 @@ let result6 = fakeDataService.customerService.addCustomer( {id: 16, firstName: "
     ,age: 21, salary:16000, type: "customer"})
 console.log(result6);
 console.log("----------------------------------------------------")
+
+console.log("LISTING DATA")
 console.log(fakeDataService.employeeService.listEmployees());
+console.log("----------------------------------------------------")
 
 console.log("GET USER BY ID:")
 console.log(fakeDataService.employeeService.getEmployeeById(16));
