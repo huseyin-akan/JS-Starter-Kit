@@ -1,5 +1,5 @@
 import { ResultModel } from "../../../entities/models/resultModel.js";
-import { ValidationError } from "./validationError.js";
+import { ValidationError } from "../../../entities/models/validationError.js";
 import { ValidationTool } from "./validationTool.js";
 import { ValidationTypes } from "./validationTypes.js";
 

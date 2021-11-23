@@ -53,5 +53,67 @@ export const users = [
         age: 20,
         salary: 15000,
         type: "employee"
+    },
+    {
+        id: 21,
+        firstName: "Hasan",
+        lastName: "Akılcı",
+        city: "Manisa",
+        age: 32,
+        salary: 15000,
+        type: "employeeii"
+    },
+    {
+        id: "123asd",
+        firstName: "Hasan",
+        lastName: "Akılcı",
+        city: "Manisa",
+        age: 32,
+        salary: 15000,
+        type: "employee"
+    },
+    {
+        id: 21,
+        firstName: "Hasan",
+        lastName: "Akılcı",
+        age: 32,
+        salary: 15000,
+        type: "employee"
+    },
+    {
+        id: 22,
+        firstName: "Hasan",
+        lastName: "Sekman",
+        city: "Manisa",
+        age: 32,
+        salary: 15000,
+        type: "employee"
+    },
+    {
+        id: 23,
+        firstName: "Merve",
+        lastName: "Tapacı",
+        city: "Mersin",
+        age: 56,
+        salary: 5634,
+        type: "customer"
+    },
+    {
+        id: 23,
+        firstName: "Mehmet",
+        lastName: "Aydın",
+        city: "Tokat",
+        age: 12,
+        salary: 1212,
+        type: "employee"
+    },
+    {
+        id: 24,
+        firstName: "John",
+        lastName: "Biden",
+        city: "New Jersey",
+        age: 45,
+        salary: 121212,
+        type: "customer"
     }
 ]
